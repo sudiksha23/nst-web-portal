@@ -22,14 +22,17 @@ a{
   }
   .container{
     top: 10px;
-    height: 600px;
-    width: 320px;
-    left: 580px;
+    right:20px;
+    width: 18%;
+    float: right;
     background-color: red;
     color: white;
     font-family: Times New Roman, Times, serif;
-    padding-top: 30px;
-    padding-left: 40px;
+    padding-top: 2%;
+    padding-left: 2%;
+    border: 2px solid;
+    padding: 10px;
+  box-shadow:  8px 8px 8px 8px #888888;
 
   }
   
@@ -37,7 +40,7 @@ a{
 {% endblock style %}
 {% block body %}
 <nav class="navbar navbar-expand-lg" style="background-color: red;">
-    <h1><a class="navbar-brand" href="#" style="color: seashell; font-size: 50px;">Navbar</a></h1>
+    <h1><a class="navbar-brand" href="#" style="color: seashell; font-size: 50px;">NST</a></h1>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 350px;">
         <li class="nav-item active">
@@ -64,7 +67,23 @@ a{
     </div>
   </nav>
   <div class="container">
-  <H1>NEURAL<BR> STYLE TRANSFER</H1>
+  <H1 style="floatformat:center">NEURAL</h1><h1 style="float:center;">STYLE</h1><h1 style="float:center;"> TRANSFER</H1>
+   <form action="nstimages" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+   <div class="custom-file">
+        <label class="custom-file-label" for="content"><b>Content Image</b></label>
+        <input type="file" value="submit" name="content">
+    </div>
+    <div class="custom-file">
+        <label class="custom-file-label" for="style"><b>Style Image</b></label>
+        <input type="file" value="submit" name="style">
+    </div>
+     {{ form.file }}
+      {{ form.as_p }} 
+       <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
+        </form>
+ 
+
   </div>
   
   
