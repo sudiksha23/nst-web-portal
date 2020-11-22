@@ -7,7 +7,7 @@
     margin-right:0px;
     margin-top:0px;
     width: 22%;
-    height:595px;
+    height:615px;
     float: right;
     background-image: linear-gradient(to bottom, rgb(245,56,39), rgb(150,30,20));
     color: white;
@@ -44,41 +44,161 @@
     color:white;
     padding-top:10px;
  }
+ 
+
+
+ .overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+.uploadbuttons{
+  font-size:30px; 
+  cursor:pointer; 
+   background-color:rgb(142, 75, 69); 
+   border-radius:10%;
+   padding-top: 10px;
+   padding-bottom:10px;
+   margin-left:45px;
+ 
+}
+li{
+  margin-right:25px;
+  margin-left:25px;
+}
+
 {% endblock style %}
 {% block body %}
+
+<nav class="navbar navbar-expand-lg" >
+  <h1><a class="navbar-brand" href="index" style="color: seashell; font-size: 50px; font-family: 'Orbitron', sans-serif;" >NST</a></h1>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 400px; font-family: 'Orbitron', sans-serif;font-size: 20px; ">
+      <li class="nav-item active">
+         <a class="nav-link" onclick="openNavContentImages()" style="text-decoration: none;">CONTENT</a>
+      </li>
+      <div class="separator"></div>
+      
+      <li class="nav-item active">
+        <a class="nav-link" onclick="openNavStyleImages()" style="text-decoration: none;">STYLE</a>
+        </li>
+        <div class="separator"></div>
+        <li class="nav-item active">
+          <a class="nav-link" onclick="openNavContact()" style="text-decoration: none;">CONTACT US</a>
+        </li>
+        <div class="separator"></div>
+        <li class="nav-item active">
+          <a class="nav-link" onclick="openNavAbout()" style="text-decoration: none;">ABOUT US</a>
+        </li>
+        
+    </ul>
+  </div>
+</nav>
+
+
+
 
   <div class="container">
   <br><br><br>
 
-  <h1 style="float:center; text-align:center;text-shadow: 2px 2px rgb(123,35,28);">NEURAL STYLE TRANSFER</h1>
+  <h1 style="text-align:center;text-shadow: 2px 2px rgb(123,35,28);">NEURAL STYLE TRANSFER</h1>
 
     <br><br><br>
 
-    <h5 style="float:center; text-align:center;text-shadow: 2px 2px rgb(123,35,28); color: #262626; font-weight: bold;">&#x2E3B;UPLOADS&#x2E3B;</h5>
+    <h5 style=" text-align:center;text-shadow: 2px 2px rgb(123,35,28); color: #262626; font-weight: bold;">&#x2E3B;UPLOADS&#x2E3B;</h5>
+    <br>
 
-   <form action="contentfunc" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-   <div class="custom-file">
-        <label class="custom-file-label" for="content"><b>Content Image</b></label>
-        <input type="file" value="submit" name="content">
+    <div id="myNavContent" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContent()">&times;</a>
+      <div class="overlay-content">
+        <form action="contentfunc" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+         <div class="custom-file">
+              <label class="custom-file-label" for="content"><b>Content Image</b></label>
+              <input type="file" value="submit" name="content">
+          </div>
+          
+           {{ form.file }}
+            {{ form.as_p }} 
+             <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
+              </form>
+      </div>
     </div>
-    
-     {{ form.file }}
-      {{ form.as_p }} 
-       <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
-        </form>
-      
+
+
+
+    <div id="myNavStyle" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavStyle()">&times;</a>
+      <div class="overlay-content">
         <form action="stylefunc" method="post" enctype="multipart/form-data">
           {% csrf_token %}
          <div class="custom-file">
-              <label class="custom-file-label" for="style"><b>Content Image</b></label>
+              <label class="custom-file-label" for="style"><b>Style Image</b></label>
               <input type="file" value="submit" name="style">
           </div>
           
            {{ form.file }}
             {{ form.as_p }} 
-             <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
+             <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
               </form>
+      </div>
+    </div>
+    
+
+
+    <br>
+    <span class="uploadbuttons" onclick="openNavContent()" style=" padding-left: 30px;padding-right: 30px;">Content</span>
+    <br>
+    <br>
+    <span class="uploadbuttons" onclick="openNavStyle()" style="padding-left: 52px; padding-right: 52px;">Style</span>
+
+   
+      
+        
       
 
   </div>
@@ -91,6 +211,22 @@
     <p style="float: left; margin-left: 40px; padding-top: 5px; font-size: large;  font-family: 'Orbitron', sans-serif; "><b>&copy; 2020 </b></p>
     <p style="float: right; margin-right: 40px; "><b style="font-family: 'Orbitron', sans-serif;">Designed By</b> <button style="background-color: rgb(58,90,145); color: white; height: 35px; margin-left: 10px;"><b >SUDIKSHA AGRAWAL</b></button></p>
   </div>
-  
+  <script>
+    function openNavContent() {
+      document.getElementById("myNavContent").style.width = "100%";
+    }
+    
+    function openNavStyle() {
+      document.getElementById("myNavStyle").style.width = "100%";
+    }
+
+    function closeNavContent() {
+      document.getElementById("myNavContent").style.width = "0%";
+    }
+
+    function closeNavStyle() {
+      document.getElementById("myNavStyle").style.width = "0%";
+    }
+    </script>
   
   {% endblock body %}
