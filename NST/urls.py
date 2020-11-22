@@ -9,11 +9,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from NST import forms
 
 urlpatterns = [
-  #  path('admin', admin.site.urls),
+    path('admin', admin.site.urls),
     path("", views.index, name='home'),
     path("index",views.index, name='index'),
     path("nstimages", views.nstimages, name="entry"),
-    
-    
-] 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("content",views.content,name="content"),
+    path("style",views.style,name="style"),
+    path("about",views.about,name="about"),
+    path("contact",views.contact,name="contact"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

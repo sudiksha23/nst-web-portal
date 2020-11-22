@@ -1,79 +1,39 @@
 {% extends 'base.html' %}
-{% block title %}NST
-{% endblock title %}
 {% block style %}
-body{
-  background-image:
-url("https://i.postimg.cc/G2cYj32T/tubingen-kandinsky.png"); background-repeat: no-repeat;
-background-size: 100%; background-position: center;}
-
-}
-nav{
-    font-family: Times New Roman, Times, serif;
-    
-}
-a{
-  color:white;
-  font-size: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.separator {
-    width: 20px;
-    height: 45px;
-
-    border-left: 3px solid seashell;
-  
-    
-  }
   .container{
-    top: 10px;
-    right:20px;
-    width: 18%;
+    margin-right:20px;
+    margin-top:20px;
+    width: 20%;
     float: right;
-    background-color: red;
+    background-color:rgb(223, 87, 69);
     color: white;
     font-family: Times New Roman, Times, serif;
     padding-top: 2%;
     padding-left: 2%;
     border: 2px solid;
     padding: 10px;
-  box-shadow:  8px 8px 8px 8px white;
+    position:static;
+  
 
   }
-  
-  
+  img {
+  position: fixed;
+    border-radius: 50%;
+    height: 500px;
+    width:500px;
+
+    border: 5px solid white;
+  }
+  .box {
+    transition: box-shadow .5s;
+  }
+  .box:hover {
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 12px 25px 10px rgba(0, 0, 0, 0.19);
+  }
 {% endblock style %}
 {% block body %}
-<nav class="navbar navbar-expand-lg" style="background-color: red;">
-    <h1><a class="navbar-brand" href="#" style="color: seashell; font-size: 50px;">NST</a></h1>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 350px;">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">STYLE</a>
-        </li>
-        <div class="separator"></div>
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="#">CONTENT </a>
-          </li>
-          <div class="separator"></div>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">CUSTOMIZE</a>
-          </li>
-          <div class="separator"></div>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">ABOUT US </a>
-          </li>
-          <div class="separator"></div>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">CONTACT US </a>
-          </li>
-      </ul>
-    </div>
-  </nav>
   <div class="container">
-  <H1 style="floatformat:center">NEURAL</h1><h1 style="float:center;">STYLE</h1><h1 style="float:center;"> TRANSFER</H1>
+  <H1 style="float:center">NEURAL</h1><h1 style="float:center;">STYLE</h1><h1 style="float:center;"> TRANSFER</H1>
    <form action="nstimages" method="post" enctype="multipart/form-data">
     {% csrf_token %}
    <div class="custom-file">
@@ -88,10 +48,11 @@ a{
       {{ form.as_p }} 
        <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
         </form>
- 
-
   </div>
-  
+
+  <img src="https://i.postimg.cc/15bBnxGD/tubingen.png" class="box">
+  <img src="https://i.postimg.cc/9fDLgGdH/tubingen-starry-night.png" style="margin-top: 130px; margin-left: 420px; height: 400px; width: 400px;" class="box">
+  <img src="https://i.postimg.cc/jSGVvkzb/Q1FKoT.jpg" style="margin-top: 210px; margin-left: 730px; z-index: 2;" class="box">
   
   
   {% endblock body %}

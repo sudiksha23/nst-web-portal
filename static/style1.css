@@ -1,0 +1,27 @@
+body{
+    background-image: url(https://i.postimg.cc/QNnfpKgL/pexels-bryan-gomes-3977529.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  a{
+    color:white;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  nav{
+      font-family: Times New Roman, Times, serif;
+      background-color: rgb(223, 87, 69);
+      padding-left: 15px;
+      
+  }
+  .separator {
+    width: 20px;
+    height: 45px;
+
+    border-left: 3px solid seashell;
+  
+    
+  }
+  
