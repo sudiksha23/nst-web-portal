@@ -16,7 +16,6 @@ body{
       background-color: rgb(234,67,53);
       padding-left: 15px;
       box-shadow: 0px 0px 40px 40px rgb(246,177,171);
-      z-index: 2;
   }
   .separator {
     width: 20px;
