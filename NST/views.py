@@ -1,10 +1,17 @@
 from django.shortcuts import render,HttpResponse, redirect
-from NST.models import NstImages
+from NST.models import Content
+from NST.models import Style
+
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
-from NST.forms import NstImagesForm
+from NST.forms import ContentForm
+from NST.forms import StyleForm
+
 from django.core.files import File
 from django.contrib.auth.forms import UserCreationForm
+
+from django.urls import reverse_lazy
+from bootstrap_modal_forms.generic import BSModalCreateView
 
 
 # Create your views here.
@@ -12,12 +19,12 @@ def index(request):
     return render(request, 'index.html')
 
 def content(request):
-    data=NstImages.objects.all()
+    data=Content.objects.all()
     context = {'display':data}
     return render(request, 'content.html', context)
 
 def style(request):
-    data=NstImages.objects.all()
+    data=Style.objects.all()
     context = {'display':data}
     return render(request, 'style.html', context)
 
@@ -29,15 +36,27 @@ def customize(request):
     return render(request, 'customize.html')
 
 
-def nstimages(request):
+def contentfunc(request):
     if request.method == 'POST' or request.FILES == 'file':
-        form = NstImagesForm(request.POST, request.FILES) 
+        form = ContentForm(request.POST, request.FILES) 
         
         if form.is_valid(): 
             form.save() 
             return redirect('/')
             
     else: 
-        form = NstImagesForm() 
+        form = ContentForm() 
+    return render(request, 'NST/index.html',{'form':form}) 
+
+def stylefunc(request):
+    if request.method == 'POST' or request.FILES == 'file':
+        form = StyleForm(request.POST, request.FILES) 
+        
+        if form.is_valid(): 
+            form.save() 
+            return redirect('/')
+            
+    else: 
+        form = StyleForm() 
     return render(request, 'NST/index.html',{'form':form}) 
 

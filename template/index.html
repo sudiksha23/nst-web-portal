@@ -56,20 +56,31 @@
 
     <h5 style="float:center; text-align:center;text-shadow: 2px 2px rgb(123,35,28); color: #262626; font-weight: bold;">&#x2E3B;UPLOADS&#x2E3B;</h5>
 
-   <form action="nstimages" method="post" enctype="multipart/form-data">
+   <form action="contentfunc" method="post" enctype="multipart/form-data">
     {% csrf_token %}
    <div class="custom-file">
         <label class="custom-file-label" for="content"><b>Content Image</b></label>
         <input type="file" value="submit" name="content">
     </div>
-    <div class="custom-file">
-        <label class="custom-file-label" for="style"><b>Style Image</b></label>
-        <input type="file" value="submit" name="style">
-    </div>
+    
      {{ form.file }}
       {{ form.as_p }} 
        <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
         </form>
+      
+        <form action="stylefunc" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+         <div class="custom-file">
+              <label class="custom-file-label" for="style"><b>Content Image</b></label>
+              <input type="file" value="submit" name="style">
+          </div>
+          
+           {{ form.file }}
+            {{ form.as_p }} 
+             <button type="submit" class="btn btn-success" style="color:green;height:40px; width:80px">Submit</button>  
+              </form>
+      
+
   </div>
 
 
@@ -80,5 +91,6 @@
     <p style="float: left; margin-left: 40px; padding-top: 5px; font-size: large;  font-family: 'Orbitron', sans-serif; "><b>&copy; 2020 </b></p>
     <p style="float: right; margin-right: 40px; "><b style="font-family: 'Orbitron', sans-serif;">Designed By</b> <button style="background-color: rgb(58,90,145); color: white; height: 35px; margin-left: 10px;"><b >SUDIKSHA AGRAWAL</b></button></p>
   </div>
+  
   
   {% endblock body %}

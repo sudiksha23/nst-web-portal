@@ -10,13 +10,4 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
-    operations = [
-        migrations.CreateModel(
-            name='NstImages',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.ImageField(default='img1.jpg', upload_to='content', verbose_name='')),
-                ('style', models.ImageField(default='img2.jpg', upload_to='style', verbose_name='')),
-            ],
-        ),
-    ]
+    

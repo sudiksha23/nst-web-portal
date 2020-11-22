@@ -12,7 +12,9 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path("", views.index, name='home'),
     path("index",views.index, name='index'),
-    path("nstimages", views.nstimages, name="entry"),
+    path("stylefunc", views.stylefunc, name="stylefunc"),
+    path("contentfunc", views.contentfunc, name="contentfunc"),
+    
     path("content",views.content,name="content"),
     path("style",views.style,name="style"),
     path("about",views.about,name="about"),
