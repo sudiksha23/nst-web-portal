@@ -1,8 +1,6 @@
 from django import forms 
 from .models import Content
 from .models import Style
-from bootstrap_modal_forms.forms import BSModalModelForm
-
   
 class ContentForm(forms.ModelForm): 
     

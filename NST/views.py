@@ -10,9 +10,6 @@ from NST.forms import StyleForm
 from django.core.files import File
 from django.contrib.auth.forms import UserCreationForm
 
-from django.urls import reverse_lazy
-from bootstrap_modal_forms.generic import BSModalCreateView
-
 
 # Create your views here.
 def index(request):

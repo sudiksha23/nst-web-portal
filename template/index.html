@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block style %}
-  .container{
+.container{
     {% load static %}
 
     margin-right:0px;
@@ -19,299 +19,421 @@
     box-shadow: inset 0px 0px 15px 15px white;
     z-index:2;
     top:0;
-  }
+}
   
-  img {
-  position: fixed;
+img {
+    position: fixed;
     border-radius: 50%;
     height: 550px;
     width:  550px;
 
     border: 10px solid white;
-  }
-  .box {
+}
+.box {
     transition: box-shadow .5s;
-  }
-  .box:hover {
+}
+.box:hover {
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 12px 25px 10px rgba(0, 0, 0, 0.19);
-  }
-  .footer {
+}
+.footer {
     position: fixed;
-   z-index:2;
+    z-index:2;
     bottom: 0;
     width: 100%;
     background-color: rgb(59, 56, 56);
     color:white;
     padding-top:10px;
- }
- 
-
-
- .overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
 }
-
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
 .overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
 }
-
 .overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
-
 .overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
+    color: #f1f1f1;
 }
-
 .overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
 }
 
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
 }
 .uploadbuttons{
-  font-size:30px; 
-  cursor:pointer; 
-   background-color:rgb(142, 75, 69); 
-   border-radius:10%;
-   padding-top: 10px;
-   padding-bottom:10px;
-   margin-left:45px;
- 
+    font-size:30px; 
+    cursor:pointer; 
+    background-color:rgb(142, 75, 69); 
+    border-radius:10%;
+    padding-top: 10px;
+    padding-bottom:10px;
+    margin-left:45px;
 }
 li{
-  margin-right:25px;
-  margin-left:25px;
+    margin-right:25px;
+    margin-left:25px;
 }
 
+#video {
+    border: 1px solid black;
+    width: 320px;
+    height: 240px;
+}
 
+#photo {
+    border: 1px solid black;
+    width: 320px;
+    height: 240px;
+}
 
+#canvas {
+    display: none;
+}
 
-.box {
-  margin:5px;
-      border: 5px solid white;
-    }
-    .box.hover-shadow {
-      transition: 0.5s;
-    }
-    
-    .hover-shadow:hover {
-      box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10 12px 25px 10px rgba(0, 0, 0, 0.19);
-    }
-    .box {
-      transition: box-shadow .5s;
-    }
-    .box:hover {
-      box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 12px 25px 10px rgba(0, 0, 0, 0.19);
-    }
+.camera {
+    width: 340px;
+    display: inline-block;
+}
+
+.output {
+    width: 340px;
+    display: inline-block;
+}
+
+#startbutton {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 36px;
+    padding: 5px;
+    background-color: #6a67ce;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1.0);
+    cursor: pointer;
+}
 
 {% endblock style %}
 {% block body %}
 
 <nav class="navbar navbar-expand-lg" >
-  <h1><a class="navbar-brand" href="index" style="color: seashell; font-size: 50px; font-family: 'Orbitron', sans-serif;" >NST</a></h1>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 400px; font-family: 'Orbitron', sans-serif;font-size: 20px; ">
-      <li class="nav-item active">
-         <a class="nav-link" onclick="openNavContentImages()" style="text-decoration: none;">CONTENT</a>
-      </li>
-      <div class="separator"></div>
-      
-      <li class="nav-item active">
-        <a class="nav-link" onclick="openNavStyleImages()" style="text-decoration: none;">STYLE</a>
-        </li>
-        <div class="separator"></div>
-        <li class="nav-item active">
-          <a class="nav-link" onclick="openNavContact()" style="text-decoration: none;">CONTACT US</a>
-        </li>
-        <div class="separator"></div>
-        <li class="nav-item active">
-          <a class="nav-link" onclick="openNavAbout()" style="text-decoration: none;">ABOUT US</a>
-        </li>
+    <h1>
+        <a class="navbar-brand" href="index" style="color: seashell; font-size: 50px; font-family: 'Orbitron', sans-serif;" >NST</a>
+    </h1>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin-left: 400px; font-family: 'Orbitron', sans-serif;font-size: 20px; ">
+            
+            <li class="nav-item active">
+                <a class="nav-link" onclick="openNavContentImages()" style="text-decoration: none;">CONTENT</a>
+            </li>
+            
+            <div class="separator"></div>
+          
+            <li class="nav-item active">
+                <a class="nav-link" onclick="openNavStyleImages()" style="text-decoration: none;">STYLE</a>
+            </li>
+            
+            <div class="separator"></div>
+            
+            <li class="nav-item active">
+                <a class="nav-link" onclick="openNavContact()" style="text-decoration: none;">CONTACT US</a>
+            </li>
+            
+            <div class="separator"></div>
+            
+            <li class="nav-item active">
+                <a class="nav-link" onclick="openNavAbout()" style="text-decoration: none;">ABOUT US</a>
+            </li>
         
-    </ul>
-  </div>
+        </ul>
+    </div>
 </nav>
 
 
 
 
-  <div class="container">
-  <br><br><br>
-  <h1 style="text-align:center;text-shadow: 2px 2px rgb(123,35,28);">NEURAL STYLE TRANSFER</h1>
+<div class="container">
 
     <br><br><br>
+    <h1 style="text-align:center;text-shadow: 2px 2px rgb(123,35,28);">NEURAL STYLE TRANSFER</h1>
 
+    <br><br><br>
     <h5 style=" text-align:center;text-shadow: 2px 2px rgb(123,35,28); color: #262626; font-weight: bold;">&#x2E3B;UPLOADS&#x2E3B;</h5>
     <br>
 
-    <div id="myNavContent" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContent()">&times;</a>
-      <div class="overlay-content">
-        <form action="contentfunc" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-         <div class="custom-file">
-              <label class="custom-file-label" for="content"><b>Content Image</b></label>
-              <input type="file" value="submit" name="content">
-          </div>
-          
-             <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
-              </form>
-      </div>
+    <div id="myNavSelfie" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavSelfie()">&times;</a>
+        <div class="overlay-content" style="top:10%;">
+            <div class="camera">
+                <video id="video">Video stream not available.</video>
+            </div>
+            <div><button id="startbutton">Take photo</button></div>
+            <canvas id="canvas"></canvas>
+            <div class="output">
+                <img id="photo" alt="The screen capture will appear in this box." style="border-radius: 0%; position: relative;">
+            </div>
+            <!-- <form action="Selfiefunc" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="custom-file">
+                    <label class="custom-file-label" for="Selfie"><b>Selfie Image</b></label>
+                    <input type="file" value="submit" name="Selfie">
+                </div>
+                <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
+            </form> -->
+        </div>
     </div>
+
+    <div id="myNavContent" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavContent()">&times;</a>
+        <div class="overlay-content">
+            <form action="contentfunc" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="custom-file">
+                    <label class="custom-file-label" for="content"><b>Content Image</b></label>
+                    <input type="file" value="submit" name="content">
+                </div>
+                <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
+            </form>
+        </div>
+    </div>
+
+
 
     <div id="myNavStyle" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNavStyle()">&times;</a>
-      <div class="overlay-content">
-        <form action="stylefunc" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-         <div class="custom-file">
-              <label class="custom-file-label" for="style"><b>Style Image</b></label>
-              <input type="file" value="submit" name="style">
-          </div>
-             <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
-              </form>
-      </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavStyle()">&times;</a>
+        <div class="overlay-content">
+            <form action="stylefunc" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="custom-file">
+                    <label class="custom-file-label" for="style"><b>Style Image</b></label>
+                    <input type="file" value="submit" name="style">
+                </div>
+                <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
+            </form>
+        </div>
     </div>
 
-    
-    <br>
+    <span class="uploadbuttons" onclick="openNavSelfie()" style=" padding-left: 50px;padding-right: 50px;">Selfie</span>
+    <br><br>
     <span class="uploadbuttons" onclick="openNavContent()" style=" padding-left: 30px;padding-right: 30px;">Content</span>
-    <br>
-    <br>
+    <br><br>
     <span class="uploadbuttons" onclick="openNavStyle()" style="padding-left: 52px; padding-right: 52px;">Style</span>
 
-
-
-    <div id="myNavContentImages" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContentImages()">&times;</a>
-      <div class="overlay-content">
-      <div class="row" >
-        {% for i in display %}
-         
-           <img href="content" src="{{ i.content.url }}" style="width: 20%; z-index: 0;" >
-         
-         {% endfor %}
-  </div>
-    </div>
-    </div>
-
-
     <div id="myNavContact" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContact()">&times;</a>
-      <div class="overlay-content">
-        <div style="margin-top: -100px;width: 50%; margin-left: 400px;">
-       <h3>SUDIKSHA AGRAWAL </h3><br><br>
-       <p>MASTER OF COMPUTER APPLICATIONS
- <br>
-        Department of Mathematical And Computational Sciences<br>
-        National Institute Of Technology Karnataka, Surathkal<br><br>
-       Contact us on :<br>
-          <p><b>Email : </b>sudiksha.sa23@gmail.com<br><b>Phone No. : </b>9039835112</p>
-          <a style="font-size: medium;" href="https://github.com/sudiksha23"> <b>github</b></a>
-          <a style="font-size: medium;" href="https://www.linkedin.com/in/sudiksha-agrawal-b58955140/"><b>LinkedIn</b></a>
-          
-        </p>
-
-      </div>
-      </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavContact()">&times;</a>
+        <div class="overlay-content">
+            <div style="margin-top: -100px;width: 50%; margin-left: 400px;">
+                <h3>SUDIKSHA AGRAWAL </h3>
+                <br><br>
+                <p>
+                    MASTER OF COMPUTER APPLICATIONS
+                    <br>
+                    Department of Mathematical And Computational Sciences
+                    <br>
+                    National Institute Of Technology Karnataka, Surathkal
+                    <br><br>
+                    Contact us on :
+                    <br>
+                    <p>
+                        <b>Email : </b>sudiksha.sa23@gmail.com
+                        <br>
+                        <b>Phone No. : </b>9039835112
+                    </p>
+                    <a style="font-size: medium;" href="https://github.com/sudiksha23"> <b>github</b></a>
+                    <a style="font-size: medium;" href="https://www.linkedin.com/in/sudiksha-agrawal-b58955140/"><b>LinkedIn</b></a>
+                </p>
+            </div>
+        </div>
     </div>
 
 
     <div id="myNavAbout" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNavAbout()">&times;</a>
-      <div class="overlay-content">
-        <div style="margin-top: -100px; width: 50%; margin-left: 400px;">
-        <h1>NEURAL STYLE TRANSFER </h1><br>
-          <p>The objective of Web Based Neural Style Transfer Using Convolutional Neural Network is to implement algorithms that take as input two images — a style image and a content image — and outputs a new image depicting the objects of the content image in the style of the other image. The algorithm allows us to produce new images of high perceptual quality that combine the content of an arbitrary photograph with the appearance of numerous well known artworks. The results provide new insights into the deep image representations learned by Convolutional Neural Networks and demonstrate their potential for high level image synthesis and manipulation.<br>
-            <BR>This website aims at transferring the style from one image onto another, goal is to synthesise a texture from a style image while constraining the texture synthesis in order to preserve the semantic content of a content image. The style image and the content image can be uploaded by the user from the user interface, the user can also click her/his own picture through a webcam to generate his own content image. The synthesised image is saved in the local system of the user and is displayed onto the user interface for inspection.
-          </p>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavAbout()">&times;</a>
+        <div class="overlay-content">
+            <div style="margin-top: -100px; width: 50%; margin-left: 400px;">
+                <h1>NEURAL STYLE TRANSFER </h1>
+                <br>
+                <p>
+                    The objective of Web Based Neural Style Transfer Using Convolutional Neural Network is to implement algorithms that take as input two images — a style image and a content image — and outputs a new image depicting the objects of the content image in the style of the other image. The algorithm allows us to produce new images of high perceptual quality that combine the content of an arbitrary photograph with the appearance of numerous well known artworks. The results provide new insights into the deep image representations learned by Convolutional Neural Networks and demonstrate their potential for high level image synthesis and manipulation.
+                    <br><br>
+                    This website aims at transferring the style from one image onto another, goal is to synthesise a texture from a style image while constraining the texture synthesis in order to preserve the semantic content of a content image. The style image and the content image can be uploaded by the user from the user interface, the user can also click her/his own picture through a webcam to generate his own content image. The synthesised image is saved in the local system of the user and is displayed onto the user interface for inspection.
+                </p>
+            </div>
+
         </div>
-
-      </div>
     </div>
-
-    
-
-  </div>
-
-  
+</div>
 
 
-  <img src="https://i.postimg.cc/15bBnxGD/tubingen.png" class="box" style="top: -10px; left: -80px; z-index: -1;">
-  <img src="https://i.postimg.cc/9fDLgGdH/tubingen-starry-night.png" style="margin-top: 120px; margin-left: 340px; height: 450px; width: 450px;"  class="box">
-  <img src="https://i.postimg.cc/jSGVvkzb/Q1FKoT.jpg" style="margin-top: 200px; margin-left: 650px; height: 600px; width: 600px; z-index: -1;" class="box">
-  <div class="footer">
-    <p style="float: left; margin-left: 40px; padding-top: 5px; font-size: large;  font-family: 'Orbitron', sans-serif; "><b>&copy; 2020 </b></p>
-    <p style="float: right; margin-right: 40px; "><b style="font-family: 'Orbitron', sans-serif;">Designed By</b> <button style="background-color: rgb(58,90,145); color: white; height: 35px; margin-left: 10px;"><b >SUDIKSHA AGRAWAL</b></button></p>
-  </div>
-  <script>
+<img src="https://i.postimg.cc/15bBnxGD/tubingen.png" class="box" style="top: -10px; left: -80px; z-index: -1;">
+<img src="https://i.postimg.cc/9fDLgGdH/tubingen-starry-night.png" style="margin-top: 120px; margin-left: 340px; height: 450px; width: 450px;"  class="box">
+<img src="https://i.postimg.cc/jSGVvkzb/Q1FKoT.jpg" style="margin-top: 200px; margin-left: 650px; height: 600px; width: 600px; z-index: -1;" class="box">
+
+<div class="footer">
+<p style="float: left; margin-left: 40px; padding-top: 5px; font-size: large;  font-family: 'Orbitron', sans-serif; ">
+    <b>&copy; 2020 </b>
+</p>
+    <p style="float: right; margin-right: 40px; ">
+        <b style="font-family: 'Orbitron', sans-serif;">Designed By</b> 
+        <button style="background-color: rgb(58,90,145); color: white; height: 35px; margin-left: 10px;">
+            <b>SUDIKSHA AGRAWAL</b>
+        </button>
+    </p>
+</div>
+
+<script>
     function openNavContent() {
-      document.getElementById("myNavContent").style.width = "100%";
+        document.getElementById("myNavContent").style.width = "100%";
     }
     
     function openNavStyle() {
-      document.getElementById("myNavStyle").style.width = "100%";
+        document.getElementById("myNavStyle").style.width = "100%";
+    }
+
+    function openNavSelfie() {
+        document.getElementById("myNavSelfie").style.width = "100%";
+    }
+
+    function openNavContact() {
+        document.getElementById("myNavContact").style.width = "100%";
+    }
+
+    function openNavAbout() {
+        document.getElementById("myNavAbout").style.width = "100%";
     }
 
     function closeNavContent() {
-      document.getElementById("myNavContent").style.width = "0%";
+        document.getElementById("myNavContent").style.width = "0%";
     }
 
     function closeNavStyle() {
-      document.getElementById("myNavStyle").style.width = "0%";
+        document.getElementById("myNavStyle").style.width = "0%";
     }
-    function openNavContentImages() {
-      document.getElementById("myNavContentImages").style.width = "100%";
+
+    function closeNavSelfie() {
+        document.getElementById("myNavSelfie").style.width = "0%";
     }
-    function openNavStyleImages() {
-      document.getElementById("myNavStyleImages").style.width = "100%";
-    }
-    function openNavContact() {
-      document.getElementById("myNavContact").style.width = "100%";
-    }
-    function openNavAbout() {
-      document.getElementById("myNavAbout").style.width = "100%";
-    }
-    function closeNavContentImages() {
-      document.getElementById("myNavContentImages").style.width = "0%";
-    }
-    function closeNavStyleImages() {
-      document.getElementById("myNavStyleImages").style.width = "0%";
-    }
+
     function closeNavContact() {
-      document.getElementById("myNavContact").style.width = "0%";
+        document.getElementById("myNavContact").style.width = "0%";
     }
+
     function closeNavAbout() {
-      document.getElementById("myNavAbout").style.width = "0%";
+        document.getElementById("myNavAbout").style.width = "0%";
     }
-    </script>
+
+
+
+    (function() {
+
+        var width = 320; // We will scale the photo width to this
+        var height = 0; // This will be computed based on the input stream
+
+        var streaming = false;
+
+        var video = null;
+        var canvas = null;
+        var photo = null;
+        var startbutton = null;
+
+        function startup() {
+            video = document.getElementById('video');
+            canvas = document.getElementById('canvas');
+            photo = document.getElementById('photo');
+            startbutton = document.getElementById('startbutton');
+
+            navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: false
+                })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+
+            video.addEventListener('canplay', function(ev) {
+                if (!streaming) {
+                    height = video.videoHeight / (video.videoWidth / width);
+
+                    if (isNaN(height)) {
+                        height = width / (4 / 3);
+                    }
+
+                    video.setAttribute('width', width);
+                    video.setAttribute('height', height);
+                    canvas.setAttribute('width', width);
+                    canvas.setAttribute('height', height);
+                    streaming = true;
+                }
+            }, false);
+
+            startbutton.addEventListener('click', function(ev) {
+                takepicture();
+                ev.preventDefault();
+            }, false);
+
+            clearphoto();
+        }
+
+
+        function clearphoto() {
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#AAA";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
+
+        function takepicture() {
+            var context = canvas.getContext('2d');
+            if (width && height) {
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
+
+                var data = canvas.toDataURL('image/png');
+                photo.setAttribute('src', data);
+            } else {
+                clearphoto();
+            }
+        }
+
+        window.addEventListener('load', startup, false);
+    })();
+</script>
   
-  {% endblock body %}
+{% endblock body %}
