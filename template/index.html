@@ -111,6 +111,27 @@ li{
   margin-left:25px;
 }
 
+
+
+
+.box {
+  margin:5px;
+      border: 5px solid white;
+    }
+    .box.hover-shadow {
+      transition: 0.5s;
+    }
+    
+    .hover-shadow:hover {
+      box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10 12px 25px 10px rgba(0, 0, 0, 0.19);
+    }
+    .box {
+      transition: box-shadow .5s;
+    }
+    .box:hover {
+      box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 12px 25px 10px rgba(0, 0, 0, 0.19);
+    }
+
 {% endblock style %}
 {% block body %}
 
@@ -144,7 +165,6 @@ li{
 
   <div class="container">
   <br><br><br>
-
   <h1 style="text-align:center;text-shadow: 2px 2px rgb(123,35,28);">NEURAL STYLE TRANSFER</h1>
 
     <br><br><br>
@@ -162,14 +182,10 @@ li{
               <input type="file" value="submit" name="content">
           </div>
           
-           {{ form.file }}
-            {{ form.as_p }} 
              <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
               </form>
       </div>
     </div>
-
-
 
     <div id="myNavStyle" class="overlay">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNavStyle()">&times;</a>
@@ -180,28 +196,73 @@ li{
               <label class="custom-file-label" for="style"><b>Style Image</b></label>
               <input type="file" value="submit" name="style">
           </div>
-          
-           {{ form.file }}
-            {{ form.as_p }} 
              <button type="submit" class="btn btn-success" style="color:white;height:40px; width:80px">Submit</button>  
               </form>
       </div>
     </div>
+
     
-
-
     <br>
     <span class="uploadbuttons" onclick="openNavContent()" style=" padding-left: 30px;padding-right: 30px;">Content</span>
     <br>
     <br>
     <span class="uploadbuttons" onclick="openNavStyle()" style="padding-left: 52px; padding-right: 52px;">Style</span>
 
-   
-      
-        
-      
+
+
+    <div id="myNavContentImages" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContentImages()">&times;</a>
+      <div class="overlay-content">
+      <div class="row" >
+        {% for i in display %}
+         
+           <img href="content" src="{{ i.content.url }}" style="width: 20%; z-index: 0;" >
+         
+         {% endfor %}
+  </div>
+    </div>
+    </div>
+
+
+    <div id="myNavContact" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavContact()">&times;</a>
+      <div class="overlay-content">
+        <div style="margin-top: -100px;width: 50%; margin-left: 400px;">
+       <h3>SUDIKSHA AGRAWAL </h3><br><br>
+       <p>MASTER OF COMPUTER APPLICATIONS
+ <br>
+        Department of Mathematical And Computational Sciences<br>
+        National Institute Of Technology Karnataka, Surathkal<br><br>
+       Contact us on :<br>
+          <p><b>Email : </b>sudiksha.sa23@gmail.com<br><b>Phone No. : </b>9039835112</p>
+          <a style="font-size: medium;" href="https://github.com/sudiksha23"> <b>github</b></a>
+          <a style="font-size: medium;" href="https://www.linkedin.com/in/sudiksha-agrawal-b58955140/"><b>LinkedIn</b></a>
+          
+        </p>
+
+      </div>
+      </div>
+    </div>
+
+
+    <div id="myNavAbout" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavAbout()">&times;</a>
+      <div class="overlay-content">
+        <div style="margin-top: -100px; width: 50%; margin-left: 400px;">
+        <h1>NEURAL STYLE TRANSFER </h1><br>
+          <p>The objective of Web Based Neural Style Transfer Using Convolutional Neural Network is to implement algorithms that take as input two images — a style image and a content image — and outputs a new image depicting the objects of the content image in the style of the other image. The algorithm allows us to produce new images of high perceptual quality that combine the content of an arbitrary photograph with the appearance of numerous well known artworks. The results provide new insights into the deep image representations learned by Convolutional Neural Networks and demonstrate their potential for high level image synthesis and manipulation.<br>
+            <BR>This website aims at transferring the style from one image onto another, goal is to synthesise a texture from a style image while constraining the texture synthesis in order to preserve the semantic content of a content image. The style image and the content image can be uploaded by the user from the user interface, the user can also click her/his own picture through a webcam to generate his own content image. The synthesised image is saved in the local system of the user and is displayed onto the user interface for inspection.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    
 
   </div>
+
+  
 
 
   <img src="https://i.postimg.cc/15bBnxGD/tubingen.png" class="box" style="top: -10px; left: -80px; z-index: -1;">
@@ -226,6 +287,30 @@ li{
 
     function closeNavStyle() {
       document.getElementById("myNavStyle").style.width = "0%";
+    }
+    function openNavContentImages() {
+      document.getElementById("myNavContentImages").style.width = "100%";
+    }
+    function openNavStyleImages() {
+      document.getElementById("myNavStyleImages").style.width = "100%";
+    }
+    function openNavContact() {
+      document.getElementById("myNavContact").style.width = "100%";
+    }
+    function openNavAbout() {
+      document.getElementById("myNavAbout").style.width = "100%";
+    }
+    function closeNavContentImages() {
+      document.getElementById("myNavContentImages").style.width = "0%";
+    }
+    function closeNavStyleImages() {
+      document.getElementById("myNavStyleImages").style.width = "0%";
+    }
+    function closeNavContact() {
+      document.getElementById("myNavContact").style.width = "0%";
+    }
+    function closeNavAbout() {
+      document.getElementById("myNavAbout").style.width = "0%";
     }
     </script>
   

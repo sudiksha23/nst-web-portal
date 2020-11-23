@@ -10,4 +10,19 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
-    
+    operations = [
+        migrations.CreateModel(
+            name='Content',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('content', models.ImageField(default='img1.jpg', upload_to='content/uploads', verbose_name='')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Style',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('style', models.ImageField(default='img2.jpg', upload_to='style/uploads', verbose_name='')),
+            ],
+        ),
+    ]

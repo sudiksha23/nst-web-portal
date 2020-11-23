@@ -21,7 +21,7 @@ def index(request):
 def content(request):
     data=Content.objects.all()
     context = {'display':data}
-    return render(request, 'content.html', context)
+    return render(request, 'index.html', context)
 
 def style(request):
     data=Style.objects.all()
